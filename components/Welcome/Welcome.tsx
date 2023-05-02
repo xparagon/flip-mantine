@@ -1,5 +1,9 @@
-import { Title, Text, Anchor } from '@mantine/core';
+import { Title, Text, Anchor, Card, Button, Center } from '@mantine/core';
 import useStyles from './Welcome.styles';
+import { Grid, Skeleton, Container } from '@mantine/core';
+import Link from 'next/link';
+
+const child = <Skeleton height={140} radius="md" animate={false} />;
 
 export function Welcome() {
   const { classes } = useStyles();
@@ -7,19 +11,32 @@ export function Welcome() {
   return (
     <>
       <Title className={classes.title} align="center" mt={100}>
-        Welcome to{' '}
-        <Text inherit variant="gradient" component="span">
-          Mantine
-        </Text>
+        SNAKK MED MEG
       </Title>
-      <Text color="dimmed" align="center" size="lg" sx={{ maxWidth: 580 }} mx="auto" mt="xl">
-        This starter Next.js project includes a minimal setup for server side rendering, if you want
-        to learn more on Mantine + Next.js integration follow{' '}
-        <Anchor href="https://mantine.dev/guides/next/" size="lg">
-          this guide
-        </Anchor>
-        . To get started edit index.tsx file.
-      </Text>
+      <Container my="md">
+        <Grid>
+          <Grid.Col xs={6}>
+            <Card shadow="md" radius="md" withBorder>
+              <Center>
+
+                <Link href="/flip" passHref>
+                  <Button component="a">Flip</Button>
+                </Link>
+              </Center>
+            </Card>
+          </Grid.Col>
+          <Grid.Col xs={6}>
+            <Card shadow="md" radius="md" withBorder>
+              <Center>
+
+                <Link href="/match" passHref>
+                  <Button component="a">Match</Button>
+                </Link>
+              </Center>
+            </Card>
+          </Grid.Col>
+        </Grid>
+      </Container>
     </>
   );
 }
